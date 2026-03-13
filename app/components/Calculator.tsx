@@ -4,6 +4,7 @@ import { Label } from "~/components/ui/label";
 import { Input } from "~/components/ui/input";
 import { Slider } from "~/components/ui/slider";
 import { Card, CardContent } from "~/components/ui/card";
+import CardRevalorisation from "./CardRevalo";
 
 export function Calculator() {
   const deputiesCount = 109; // Fixe, comme demandé
@@ -24,7 +25,7 @@ export function Calculator() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto items-start">
-      
+
       {/* Form Section */}
       <Card className="lg:col-span-5 bg-zinc-900/50 border-zinc-800/80 shadow-xl backdrop-blur-sm p-6 lg:p-8">
         <div className="space-y-8">
@@ -47,9 +48,9 @@ export function Calculator() {
 
               <div>
                 <Label className="text-zinc-300 font-medium">Salaire actuel des députés (FCFA)</Label>
-                <Input 
-                  type="number" 
-                  value={currentDeputySalary} 
+                <Input
+                  type="number"
+                  value={currentDeputySalary}
                   onChange={(e) => setCurrentDeputySalary(e.target.value)}
                   className="mt-2 text-lg font-medium bg-zinc-900 border-zinc-700 text-zinc-100"
                 />
@@ -57,9 +58,9 @@ export function Calculator() {
 
               <div>
                 <Label className="text-emerald-400 font-medium">Nouveau salaire proposé (FCFA)</Label>
-                <Input 
-                  type="number" 
-                  value={targetDeputySalary} 
+                <Input
+                  type="number"
+                  value={targetDeputySalary}
                   onChange={(e) => setTargetDeputySalary(e.target.value)}
                   className="mt-2 text-lg font-medium bg-zinc-900 border-emerald-900/50 text-zinc-100 focus-visible:ring-emerald-500"
                 />
@@ -74,10 +75,10 @@ export function Calculator() {
                   <span className="text-zinc-100 font-bold">{docsCount} médecins</span>
                 </Label>
                 <div className="mt-4 flex gap-4 items-center">
-                  <Slider 
-                    max={5000} 
-                    min={1} 
-                    step={10} 
+                  <Slider
+                    max={5000}
+                    min={1}
+                    step={10}
                     value={[docsCount]}
                     onValueChange={(val) => {
                       const num = Array.isArray(val) ? val[0] : val;
@@ -85,9 +86,9 @@ export function Calculator() {
                     }}
                     className="flex-1"
                   />
-                  <Input 
-                    type="number" 
-                    value={doctorsCount} 
+                  <Input
+                    type="number"
+                    value={doctorsCount}
                     onChange={(e) => setDoctorsCount(e.target.value)}
                     className="w-24 bg-zinc-900 border-zinc-700 h-9 shrink-0 text-right font-mono text-zinc-100"
                   />
@@ -98,26 +99,30 @@ export function Calculator() {
 
               <div>
                 <Label className="text-zinc-300 font-medium">Montant du SMIG (FCFA)</Label>
-                <Input 
-                  type="number" 
-                  value={smigAmount} 
+                <Input
+                  type="number"
+                  value={smigAmount}
                   onChange={(e) => setSmigAmount(e.target.value)}
                   className="mt-2 text-lg font-medium bg-zinc-900 border-zinc-700 text-zinc-100"
                 />
               </div>
             </div>
+
+            <CardRevalorisation
+              currentDeputySmigRatio={smig > 0 ? currentSal / smig : 0}
+              targetDeputySmigRatio={smig > 0 ? targetSal / smig : 0}
+            />
+
           </div>
         </div>
       </Card>
 
       {/* Result Section */}
       <div className="lg:col-span-7 h-full">
-        <ResultCard 
-          economies={economies} 
-          doctorSalary={doctorSalary} 
+        <ResultCard
+          economies={economies}
+          doctorSalary={doctorSalary}
           smigRatio={smigRatio}
-          currentDeputySmigRatio={smig > 0 ? currentSal / smig : 0}
-          targetDeputySmigRatio={smig > 0 ? targetSal / smig : 0}
         />
       </div>
 
