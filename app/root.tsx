@@ -36,6 +36,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         {children}
         <ScrollRestoration />
+        <SpeedInsights />
+        <Analytics />
         <Scripts />
       </body>
     </html>
@@ -71,8 +73,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           <code>{stack}</code>
         </pre>
       )}
-      <SpeedInsights />
-      <Analytics />
     </main>
   );
 }
