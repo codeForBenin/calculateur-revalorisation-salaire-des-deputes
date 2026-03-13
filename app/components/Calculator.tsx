@@ -10,8 +10,8 @@ import { InfraImpactCard } from "./InfraImpactCard";
 export function Calculator() {
   const deputiesCount = 109; // Fixe, comme demandé
   const [currentDeputySalary, setCurrentDeputySalary] = useState<number | string>(5000000);
-  const [targetDeputySalary, setTargetDeputySalary] = useState<number | string>(2000000);
-  const [doctorsCount, setDoctorsCount] = useState<number | string>(1000);
+  const [targetDeputySalary, setTargetDeputySalary] = useState<number | string>(1800000);
+  const [doctorsCount, setDoctorsCount] = useState<number | string>(1500);
   const [smigAmount, setSmigAmount] = useState<number | string>(52000);
 
   // Calculations

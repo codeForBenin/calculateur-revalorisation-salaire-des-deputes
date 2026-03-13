@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -70,6 +71,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           <code>{stack}</code>
         </pre>
       )}
+      <SpeedInsights />
     </main>
   );
 }
