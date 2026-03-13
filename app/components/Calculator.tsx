@@ -5,6 +5,7 @@ import { Input } from "~/components/ui/input";
 import { Slider } from "~/components/ui/slider";
 import { Card, CardContent } from "~/components/ui/card";
 import CardRevalorisation from "./CardRevalo";
+import { InfraImpactCard } from "./InfraImpactCard";
 
 export function Calculator() {
   const deputiesCount = 109; // Fixe, comme demandé
@@ -118,12 +119,13 @@ export function Calculator() {
       </Card>
 
       {/* Result Section */}
-      <div className="lg:col-span-7 h-full">
+      <div className="lg:col-span-7 flex flex-col gap-6">
         <ResultCard
           economies={economies}
           doctorSalary={doctorSalary}
           smigRatio={smigRatio}
         />
+        <InfraImpactCard economies={economies} />
       </div>
 
     </div>
