@@ -53,6 +53,7 @@ export function Calculator() {
                   type="number"
                   value={currentDeputySalary}
                   onChange={(e) => setCurrentDeputySalary(e.target.value)}
+                  step={100000}
                   className="mt-2 text-lg font-medium bg-zinc-900 border-zinc-700 text-zinc-100"
                 />
               </div>
@@ -62,6 +63,7 @@ export function Calculator() {
                 <Input
                   type="number"
                   value={targetDeputySalary}
+                  step={100000}
                   onChange={(e) => setTargetDeputySalary(e.target.value)}
                   className="mt-2 text-lg font-medium bg-zinc-900 border-emerald-900/50 text-zinc-100 focus-visible:ring-emerald-500"
                 />
@@ -78,8 +80,8 @@ export function Calculator() {
                 <div className="mt-4 flex gap-4 items-center">
                   <Slider
                     max={5000}
-                    min={1}
-                    step={10}
+                    min={100}
+                    step={100}
                     value={[docsCount]}
                     onValueChange={(val) => {
                       const num = Array.isArray(val) ? val[0] : val;
@@ -90,6 +92,7 @@ export function Calculator() {
                   <Input
                     type="number"
                     value={doctorsCount}
+                    step={100}
                     onChange={(e) => setDoctorsCount(e.target.value)}
                     className="w-24 bg-zinc-900 border-zinc-700 h-9 shrink-0 text-right font-mono text-zinc-100"
                   />
@@ -103,6 +106,7 @@ export function Calculator() {
                 <Input
                   type="number"
                   value={smigAmount}
+                  step={1000}
                   onChange={(e) => setSmigAmount(e.target.value)}
                   className="mt-2 text-lg font-medium bg-zinc-900 border-zinc-700 text-zinc-100"
                 />
